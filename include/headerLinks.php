@@ -3,9 +3,10 @@
    <meta http-equiv="x-ua-compatible" content="ie=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description"
-      content="Bizen is a modern Business Consulting HTML template designed for consulting firms, corporate agencies, financial advisors, and professional service providers. Clean, responsive, and optimized for high-performance business websites.">
-   <meta name="keywords"
-      content="business consulting, corporate template, consulting firm, financial advisor, business agency, corporate website, responsive template">
+      content="Global Trading is a trusted textile and fabric trading company offering quality fabrics and textile products for businesses, retailers, and customers. Explore our products and connect with us for your fabric sourcing needs.">
+
+<meta name="keywords"
+      content="Global Trading, textile trading, fabric trading, fabrics, textile products, quality fabrics, fabric supplier, textile supplier, fabric wholesale, Pakistan textiles">
    <meta name="author" content="theme-village">
    <title>Global Trading - Your Trusted Business Partners</title>
    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
