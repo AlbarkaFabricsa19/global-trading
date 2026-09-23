@@ -153,80 +153,93 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
    <!-- Vision & Mission Section End -->
 
    <!-- Executive Leadership Section -->
-   <section class="sec-padding bg-light border-top border-bottom">
+   <section class="sec-padding bg-white">
       <div class="container">
          <div class="sec-intro text-center mb-5">
-            <span class="sub-title wow fadeInUp">Company Leadership</span>
+            <span class="sub-title wow fadeInUp">Leadership & Management</span>
             <h2 class="sec-title">EXECUTIVE TEAM</h2>
-            <p class="lead text-muted">Directing operations across Lahore & Faisalabad divisions.</p>
+            <p class="lead text-muted">Meet the visionary leaders behind Global Trading's success and operational excellence.</p>
          </div>
 
          <div class="row justify-content-center gy-4">
+            <!-- CEO -->
             <div class="col-lg-4 col-md-6">
-               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 bg-white">
-                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:120px; height:120px;">
-                     <img src="images/team1.png" alt="CEO" class="img-fluid object-fit-cover w-100 h-100">
+               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
+                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
+                     <img src="images/team1.png" alt="Muhammad Asad Sheikh - CEO" class="img-fluid object-fit-cover w-100 h-100">
                   </div>
                   <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">CEO</span>
-                  <h3 class="h5 fw-bold text-dark mb-1">Muhammad Asad Sheikh</h3>
+                  <h3 class="h4 fw-bold text-dark mb-1">Muhammad Asad Sheikh</h3>
                   <p class="text-muted small">Chief Executive Officer</p>
                </div>
             </div>
-
+            <!-- Marketing Director Lahore -->
             <div class="col-lg-4 col-md-6">
-               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 bg-white">
-                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:120px; height:120px;">
-                     <img src="images/team2.jpeg" alt="Managing Director" class="img-fluid object-fit-cover w-100 h-100">
-                  </div>
-                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Managing Director</span>
-                  <h3 class="h5 fw-bold text-dark mb-1">Abdul Rehman</h3>
-                  <p class="text-muted small">Managing Director</p>
-               </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 bg-white">
-                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:120px; height:120px;">
-                     <img src="images/team3.png" alt="Marketing Head" class="img-fluid object-fit-cover w-100 h-90">
-                  </div>
-                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Marketing Head</span>
-                  <h3 class="h5 fw-bold text-dark mb-1">Rana Faizan</h3>
-                  <p class="text-muted small">Marketing Head (Faisalabad)</p>
-               </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 bg-white">
-                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:120px; height:120px;">
-                     <img src="images/placeholder_img.png" alt="Marketing Director" class="img-fluid object-fit-cover w-100 h-80">
+               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
+                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
+                     <img src="images/team2.png" alt="Faiz Rasool - Marketing Director" class="img-fluid object-fit-cover w-100 h-85">
                   </div>
                   <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Marketing Director</span>
-                  <h3 class="h5 fw-bold text-dark mb-1">Faiz Rasool</h3>
-                  <p class="text-muted small">Marketing Director (Lahore Division)</p>
+                  <h3 class="h4 fw-bold text-dark mb-1">Faiz Rasool</h3>
+                  <p class="text-muted small">Lahore Division</p>
+               </div>
+            </div>
+            <!-- Marketing Head Faisalabad -->
+            <div class="col-lg-4 col-md-6">
+               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
+                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
+                     <img src="images/team3.png" alt="Rana Faizan - Marketing Head" class="img-fluid object-fit-cover w-100 h-85">
+                  </div>
+                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Marketing Head</span>
+                  <h3 class="h4 fw-bold text-dark mb-1">Rana Faizan</h3>
+                  <p class="text-muted small">Faisalabad Division</p>
                </div>
             </div>
 
+            <!-- CFO -->
             <div class="col-lg-4 col-md-6">
-               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 bg-white">
-                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:120px; height:120px;">
-                     <img src="images/placeholder_img.png" alt="CFO" class="img-fluid object-fit-cover w-100 h-80">
+               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
+                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
+                     <img src="images/placeholder_img.png" alt="Irfan - CFO" class="img-fluid object-fit-cover w-100 h-85">
                   </div>
                   <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">CFO</span>
-                  <h3 class="h5 fw-bold text-dark mb-1">Irfan</h3>
+                  <h3 class="h4 fw-bold text-dark mb-1">Irfan</h3>
                   <p class="text-muted small">Chief Financial Officer</p>
+               </div>
+            </div>
+            <!-- Purchase -->
+            <div class="col-lg-4 col-md-6">
+               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
+                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
+                     <img src="images/placeholder_img.png" alt="Irfan - CFO" class="img-fluid object-fit-cover w-100 h-85">
+                  </div>
+                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Purchase Manager </span>
+                  <h3 class="h4 fw-bold text-dark mb-1">Rana Azam</h3>
+                  <p class="text-muted small">Purchase Manager</p>
+               </div>
+            </div>
+            <!-- Purchase -->
+            <div class="col-lg-4 col-md-6">
+               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
+                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
+                     <img src="images/placeholder_img.png" alt="Irfan - CFO" class="img-fluid object-fit-cover w-100 h-85">
+                  </div>
+                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Purchase Officer </span>
+                  <h3 class="h4 fw-bold text-dark mb-1">Muhammad Kashif</h3>
+                  <p class="text-muted small">Purchase Officer</p>
                </div>
             </div>
          </div>
       </div>
-   </section>
+   </section>F
 
    <!-- DEDICATED OUR TRUSTED CUSTOMERS SECTION -->
    <section class="sec-padding bg-white">
       <div class="container">
          <div class="sec-intro text-center mb-5">
-            <span class="sub-title wow fadeInUp">Trusted Relationships</span>
+            <span class="sub-title wow fadeInUp">TRUSTED PARTNERS</span>
             <h2 class="sec-title">OUR TRUSTED CUSTOMERS</h2>
-            <p class="lead text-muted">Page 7 Catalog Client Portfolio</p>
+            <p class="lead text-muted">We take pride in building long-term partnerships with Pakistan's leading industrial and fashion brands.</p>
          </div>
 
          <div class="row g-4 justify-content-center">

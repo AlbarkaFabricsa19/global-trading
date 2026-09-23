@@ -1,6 +1,6 @@
 <?php
 if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
-    @session_start();
+   @session_start();
 }
 // Load DB & fetch trusted customers for dynamic section
 require_once __DIR__ . '/config/db.php';
@@ -91,7 +91,7 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
                <div class="hero-content py-2">
                   <h1 class="hero-title text-white fw-bold text-uppercase display-4">WE PROVIDE THE BEST INDUSTRIAL & TRADING SOLUTIONS</h1>
                   <p class="lead text-white-50 mt-3 fs-5">Leading importer & supplier of high-quality Stitching Accessories, Mechanical & Electrical Fittings.</p>
-                  
+
                   <div class="d-md-flex align-items-center gap-4 mt-4">
                      <a href="products.php" class="btn btn-primary btn-lg">Explore Our Products <i class="fa fa-arrow-right ms-2"></i><span></span></a>
                      <a href="contact.php" class="btn btn-outline-light btn-lg">Contact Sales <i class="fa fa-phone ms-2"></i><span></span></a>
@@ -133,64 +133,6 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
    </section>
    <!-- Hero Section End -->
 
-   <!-- Vision & Mission Section Start -->
-   <section class="sec-padding bg-white overflow-hidden">
-      <div class="container">
-         <div class="row align-items-stretch gy-4">
-            <!-- Vision Card -->
-            <div class="col-lg-5">
-               <div class="p-4 p-md-5 rounded-4 bg-primary text-white h-100 shadow-sm d-flex flex-column justify-content-between position-relative overflow-hidden">
-                  <div class="position-relative z-1">
-                     <span class="badge bg-white text-primary fw-bold text-uppercase px-3 py-2 mb-3 rounded-pill">Corporate Vision</span>
-                     <h2 class="text-white fw-bold display-6 mb-4">OUR VISION</h2>
-                     <p class="fs-5 text-white-50 lh-lg mb-0">
-                        To become a leading global trading company recognized for excellence in quality, innovation, and customer satisfaction, while building long-term partnerships in local and international markets.
-                     </p>
-                  </div>
-                  <div class="mt-4 pt-4 border-top border-white border-opacity-25 z-1">
-                     <div class="d-flex align-items-center gap-3">
-                        <i class="fa fa-globe fa-2x text-white-50"></i>
-                        <span class="fw-semibold">Global Standards • Local Reliability</span>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            
-            <!-- Mission Card -->
-            <div class="col-lg-7">
-               <div class="p-4 p-md-5 rounded-4 bg-light text-dark h-100 shadow-sm border">
-                  <span class="badge bg-secondary text-white fw-bold text-uppercase px-3 py-2 mb-3 rounded-pill">Our Core Purpose</span>
-                  <h2 class="fw-bold display-6 mb-4">MISSION</h2>
-                  
-                  <ul class="list-unstyled mb-0">
-                     <li class="d-flex gap-3 mb-3">
-                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
-                        <span class="fs-6">To provide high-quality products that meet industry standards and customer expectations.</span>
-                     </li>
-                     <li class="d-flex gap-3 mb-3">
-                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
-                        <span class="fs-6">To ensure competitive pricing through efficient sourcing and direct import of raw materials.</span>
-                     </li>
-                     <li class="d-flex gap-3 mb-3">
-                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
-                        <span class="fs-6">To maintain strong relationships with clients through reliability, trust, and professional service.</span>
-                     </li>
-                     <li class="d-flex gap-3 mb-3">
-                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
-                        <span class="fs-6">To continuously expand our product range and market presence across industrial sectors.</span>
-                     </li>
-                     <li class="d-flex gap-3">
-                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
-                        <span class="fs-6">To contribute actively to the growth of the industrial and textile sectors.</span>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!-- Vision & Mission Section End -->
-
    <!-- Catalog Products Showcase Section Start -->
    <section id="products" class="sec-padding bg-light border-top border-bottom position-relative">
       <div class="container">
@@ -216,7 +158,7 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
                   <span>PRICING: COMPETITIVE MARKET RATES</span>
                </div>
             </div>
-            
+
             <div class="card-body p-4 p-md-5 bg-white">
                <div class="row gy-4">
                   <!-- Tapes -->
@@ -373,21 +315,90 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
                      <div class="p-4 p-md-5 rounded-4 bg-light border">
                         <h4 class="h5 fw-bold text-dark mb-4 text-uppercase border-bottom pb-3"><i class="fa fa-plus-circle text-primary me-2"></i>Additional Items & Accessories</h4>
                         <div class="row gy-3">
-                           <div class="col-md-4 col-sm-6"><div class="d-flex align-items-center gap-3"><i class="fa fa-bolt text-primary fs-5"></i><span>Electrical Wiring & Cables</span></div></div>
-                           <div class="col-md-4 col-sm-6"><div class="d-flex align-items-center gap-3"><i class="fa fa-toggle-on text-primary fs-5"></i><span>Switches & Sockets</span></div></div>
-                           <div class="col-md-4 col-sm-6"><div class="d-flex align-items-center gap-3"><i class="fa fa-shield-alt text-primary fs-5"></i><span>Circuit Breakers</span></div></div>
-                           <div class="col-md-4 col-sm-6"><div class="d-flex align-items-center gap-3"><i class="fa fa-tools text-primary fs-5"></i><span>Fasteners (Nuts, Bolts, Screws)</span></div></div>
-                           <div class="col-md-4 col-sm-6"><div class="d-flex align-items-center gap-3"><i class="fa fa-random text-primary fs-5"></i><span>Conduits & Trunking</span></div></div>
-                           <div class="col-md-4 col-sm-6"><div class="d-flex align-items-center gap-3"><i class="fa fa-link text-primary fs-5"></i><span>Pipe Fittings (Elbows, Tees, Reducers)</span></div></div>
+                           <div class="col-md-4 col-sm-6">
+                              <div class="d-flex align-items-center gap-3"><i class="fa fa-bolt text-primary fs-5"></i><span>Electrical Wiring & Cables</span></div>
+                           </div>
+                           <div class="col-md-4 col-sm-6">
+                              <div class="d-flex align-items-center gap-3"><i class="fa fa-toggle-on text-primary fs-5"></i><span>Switches & Sockets</span></div>
+                           </div>
+                           <div class="col-md-4 col-sm-6">
+                              <div class="d-flex align-items-center gap-3"><i class="fa fa-shield-alt text-primary fs-5"></i><span>Circuit Breakers</span></div>
+                           </div>
+                           <div class="col-md-4 col-sm-6">
+                              <div class="d-flex align-items-center gap-3"><i class="fa fa-tools text-primary fs-5"></i><span>Fasteners (Nuts, Bolts, Screws)</span></div>
+                           </div>
+                           <div class="col-md-4 col-sm-6">
+                              <div class="d-flex align-items-center gap-3"><i class="fa fa-random text-primary fs-5"></i><span>Conduits & Trunking</span></div>
+                           </div>
+                           <div class="col-md-4 col-sm-6">
+                              <div class="d-flex align-items-center gap-3"><i class="fa fa-link text-primary fs-5"></i><span>Pipe Fittings (Elbows, Tees, Reducers)</span></div>
+                           </div>
                         </div>
-                      </div>
-                   </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
       </div>
    </section>
    <!-- Catalog Products Section End -->
+   <!-- Vision & Mission Section Start -->
+   <section class="sec-padding bg-white overflow-hidden">
+      <div class="container">
+         <div class="row align-items-stretch gy-4">
+            <!-- Vision Card -->
+            <div class="col-lg-5">
+               <div class="p-4 p-md-5 rounded-4 bg-primary text-white h-100 shadow-sm d-flex flex-column justify-content-between position-relative overflow-hidden">
+                  <div class="position-relative z-1">
+                     <span class="badge bg-white text-primary fw-bold text-uppercase px-3 py-2 mb-3 rounded-pill">Corporate Vision</span>
+                     <h2 class="text-white fw-bold display-6 mb-4">OUR VISION</h2>
+                     <p class="fs-5 text-white-50 lh-lg mb-0">
+                        To become a leading global trading company recognized for excellence in quality, innovation, and customer satisfaction, while building long-term partnerships in local and international markets.
+                     </p>
+                  </div>
+                  <div class="mt-4 pt-4 border-top border-white border-opacity-25 z-1">
+                     <div class="d-flex align-items-center gap-3">
+                        <i class="fa fa-globe fa-2x text-white-50"></i>
+                        <span class="fw-semibold">Global Standards • Local Reliability</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Mission Card -->
+            <div class="col-lg-7">
+               <div class="p-4 p-md-5 rounded-4 bg-light text-dark h-100 shadow-sm border">
+                  <span class="badge bg-secondary text-white fw-bold text-uppercase px-3 py-2 mb-3 rounded-pill">Our Core Purpose</span>
+                  <h2 class="fw-bold display-6 mb-4">MISSION</h2>
+
+                  <ul class="list-unstyled mb-0">
+                     <li class="d-flex gap-3 mb-3">
+                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
+                        <span class="fs-6">To provide high-quality products that meet industry standards and customer expectations.</span>
+                     </li>
+                     <li class="d-flex gap-3 mb-3">
+                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
+                        <span class="fs-6">To ensure competitive pricing through efficient sourcing and direct import of raw materials.</span>
+                     </li>
+                     <li class="d-flex gap-3 mb-3">
+                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
+                        <span class="fs-6">To maintain strong relationships with clients through reliability, trust, and professional service.</span>
+                     </li>
+                     <li class="d-flex gap-3 mb-3">
+                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
+                        <span class="fs-6">To continuously expand our product range and market presence across industrial sectors.</span>
+                     </li>
+                     <li class="d-flex gap-3">
+                        <i class="fa fa-check-circle text-primary fs-4 mt-1"></i>
+                        <span class="fs-6">To contribute actively to the growth of the industrial and textile sectors.</span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- Vision & Mission Section End -->
 
    <!-- Executive Leadership Team Section Start -->
    <section class="sec-padding bg-white">
@@ -410,19 +421,17 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
                   <p class="text-muted small">Chief Executive Officer</p>
                </div>
             </div>
-
-            <!-- Managing Director -->
+            <!-- Marketing Director Lahore -->
             <div class="col-lg-4 col-md-6">
                <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
                   <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
-                     <img src="images/team2.jpeg" alt="Abdul Rehman - Managing Director" class="img-fluid object-fit-cover w-100 h-100">
+                     <img src="images/team2.png" alt="Faiz Rasool - Marketing Director" class="img-fluid object-fit-cover w-100 h-85">
                   </div>
-                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Managing Director</span>
-                  <h3 class="h4 fw-bold text-dark mb-1">Abdul Rehman</h3>
-                  <p class="text-muted small">Managing Director</p>
+                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Marketing Director</span>
+                  <h3 class="h4 fw-bold text-dark mb-1">Faiz Rasool</h3>
+                  <p class="text-muted small">Lahore Division</p>
                </div>
             </div>
-
             <!-- Marketing Head Faisalabad -->
             <div class="col-lg-4 col-md-6">
                <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
@@ -435,18 +444,6 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
                </div>
             </div>
 
-            <!-- Marketing Director Lahore -->
-            <div class="col-lg-4 col-md-6">
-               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
-                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
-                     <img src="images/placeholder_img.png" alt="Faiz Rasool - Marketing Director" class="img-fluid object-fit-cover w-100 h-85">
-                  </div>
-                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Marketing Director</span>
-                  <h3 class="h4 fw-bold text-dark mb-1">Faiz Rasool</h3>
-                  <p class="text-muted small">Lahore Division</p>
-               </div>
-            </div>
-
             <!-- CFO -->
             <div class="col-lg-4 col-md-6">
                <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
@@ -456,6 +453,28 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
                   <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">CFO</span>
                   <h3 class="h4 fw-bold text-dark mb-1">Irfan</h3>
                   <p class="text-muted small">Chief Financial Officer</p>
+               </div>
+            </div>
+            <!-- Purchase -->
+            <div class="col-lg-4 col-md-6">
+               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
+                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
+                     <img src="images/placeholder_img.png" alt="Irfan - CFO" class="img-fluid object-fit-cover w-100 h-85">
+                  </div>
+                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Purchase Manager </span>
+                  <h3 class="h4 fw-bold text-dark mb-1">Rana Azam</h3>
+                  <p class="text-muted small">Purchase Manager</p>
+               </div>
+            </div>
+            <!-- Purchase -->
+            <div class="col-lg-4 col-md-6">
+               <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-shadow transition">
+                  <div class="mb-3 mx-auto overflow-hidden rounded-circle border border-3 border-primary shadow" style="width:130px; height:130px;">
+                     <img src="images/placeholder_img.png" alt="Irfan - CFO" class="img-fluid object-fit-cover w-100 h-85">
+                  </div>
+                  <span class="badge bg-primary text-white text-uppercase px-3 py-1 rounded-pill mx-auto mb-2" style="width: fit-content;">Purchase Officer </span>
+                  <h3 class="h4 fw-bold text-dark mb-1">Muhammad Kashif</h3>
+                  <p class="text-muted small">Purchase Officer</p>
                </div>
             </div>
          </div>
@@ -478,19 +497,18 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
                   <div class="col-lg-3 col-md-4 col-6">
                      <div class="p-4 rounded-4 bg-white border text-center shadow-sm h-100 d-flex flex-column align-items-center justify-content-center hover-shadow transition">
                         <?php
-                           $logoFile = $customer['logo_image'] ?? '';
-                           $logoPath = __DIR__ . '/uploads/customers/' . $logoFile;
-                           if ($logoFile && file_exists($logoPath)):
+                        $logoFile = $customer['logo_image'] ?? '';
+                        $logoPath = __DIR__ . '/uploads/customers/' . $logoFile;
+                        if ($logoFile && file_exists($logoPath)):
                         ?>
                            <img src="uploads/customers/<?= htmlspecialchars($logoFile) ?>"
-                                alt="<?= htmlspecialchars($customer['alt_text'] ?: $customer['name']) ?>"
-                                style="max-height: 80px; max-width: 100%; object-fit: contain;">
+                              alt="<?= htmlspecialchars($customer['alt_text'] ?: $customer['name']) ?>"
+                              style="max-height: 80px; max-width: 100%; object-fit: contain;">
                         <?php else: ?>
                            <div class="fw-semibold fs-5 text-dark text-uppercase" style="letter-spacing:1px;">
                               <?= htmlspecialchars($customer['name']) ?>
                            </div>
                         <?php endif; ?>
-                        <small class="text-muted mt-2"><?= htmlspecialchars($customer['alt_text'] ?: '') ?></small>
                      </div>
                   </div>
                <?php endforeach; ?>
@@ -571,4 +589,5 @@ $trustedCustomers = $pdo->query("SELECT * FROM trusted_customers WHERE status = 
    <?php include 'include/footerLinks.php'; ?>
    <!-- FooterLinks End -->
 </body>
+
 </html>

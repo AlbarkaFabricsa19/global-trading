@@ -44,7 +44,7 @@ require_once __DIR__ . '/header.php';
 
 <?php include __DIR__ . '/navbar.php'; ?>
 
-<div class="container-fluid px-lg-4 py-4">
+<div class="container-fluid px-lg-2 py-4">
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
         <div>
             <h2 class="fw-bold mb-1"><i class="fa fa-boxes me-2 text-primary"></i>Manage Catalog Products</h2>
@@ -64,7 +64,7 @@ require_once __DIR__ . '/header.php';
                     <input type="text" name="search" class="form-control bg-light border-start-0" placeholder="Search by product name or keyword..." value="<?= htmlspecialchars($search) ?>">
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <select name="category_id" class="form-select bg-light">
                     <option value="0">All Product Categories</option>
@@ -92,7 +92,7 @@ require_once __DIR__ . '/header.php';
                         <tr>
                             <th class="ps-4" style="width: 70px;">ID</th>
                             <th style="width: 80px;">Image</th>
-                            <th>Product Name</th>
+                            <th>Product</th>
                             <th>Category</th>
                             <th>Pricing Tag</th>
                             <th>Items</th>
@@ -113,11 +113,11 @@ require_once __DIR__ . '/header.php';
                                 <tr>
                                     <td class="ps-4 fw-bold text-muted">#<?= $p['id'] ?></td>
                                     <td>
-                                        <?php 
-                                            $imgPath = '../uploads/products/' . $p['image'];
-                                            $displayImg = (file_exists(__DIR__ . '/../uploads/products/' . $p['image']) && !empty($p['image'])) 
-                                                ? $imgPath 
-                                                : '../images/logo.svg';
+                                        <?php
+                                        $imgPath = '../uploads/products/' . $p['image'];
+                                        $displayImg = (file_exists(__DIR__ . '/../uploads/products/' . $p['image']) && !empty($p['image']))
+                                            ? $imgPath
+                                            : '../images/logo.svg';
                                         ?>
                                         <img src="<?= htmlspecialchars($displayImg) ?>" alt="<?= htmlspecialchars($p['name']) ?>" class="rounded border shadow-sm" style="width: 50px; height: 50px; object-fit: cover;">
                                     </td>
@@ -130,13 +130,13 @@ require_once __DIR__ . '/header.php';
                                     <td><span class="badge bg-secondary"><?= htmlspecialchars($p['category_name']) ?></span></td>
                                     <td><span class="badge bg-light text-dark border"><?= htmlspecialchars($p['pricing_tag']) ?></span></td>
                                     <td>
-                                        <?php 
-                                            $items = json_decode($p['items_list'] ?? '[]', true);
-                                            if (is_array($items) && !empty($items)) {
-                                                echo '<span class="badge bg-info text-white">' . count($items) . ' items</span>';
-                                            } else {
-                                                echo '<span class="text-muted small">None</span>';
-                                            }
+                                        <?php
+                                        $items = json_decode($p['items_list'] ?? '[]', true);
+                                        if (is_array($items) && !empty($items)) {
+                                            echo '<span class="badge bg-info text-white">' . count($items) . ' items</span>';
+                                        } else {
+                                            echo '<span class="text-muted small">None</span>';
+                                        }
                                         ?>
                                     </td>
                                     <td>
@@ -146,10 +146,12 @@ require_once __DIR__ . '/header.php';
                                             <span class="badge bg-danger">Draft</span>
                                         <?php endif; ?>
                                     </td>
-                                    <td class="text-end pe-4">
-                                        <a href="../product-detail.php?id=<?= $p['id'] ?>" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill me-1" title="Preview on website"><i class="fa fa-eye"></i></a>
-                                        <a href="edit-product.php?id=<?= $p['id'] ?>" class="btn btn-sm btn-outline-primary rounded-pill me-1" title="Edit"><i class="fa fa-edit"></i></a>
-                                        <a href="delete-product.php?id=<?= $p['id'] ?>" class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Are you sure you want to delete this product?');" title="Delete"><i class="fa fa-trash"></i></a>
+                                    <td class="text-center align-middle">
+                                        <div class="d-flex gap-1 justify-content-center align-items-center">
+                                            <a href="../product-detail.php?id=<?= $p['id'] ?>" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill me-1" title="Preview on website"><i class="fa fa-eye"></i></a>
+                                            <a href="edit-product.php?id=<?= $p['id'] ?>" class="btn btn-sm btn-outline-primary rounded-pill me-1" title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="delete-product.php?id=<?= $p['id'] ?>" class="btn btn-sm btn-outline-danger rounded-pill" onclick="return confirm('Are you sure you want to delete this product?');" title="Delete"><i class="fa fa-trash"></i></a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

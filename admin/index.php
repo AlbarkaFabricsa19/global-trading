@@ -48,10 +48,10 @@ include __DIR__ . '/navbar.php';
         <div class="card stat-card bg-primary text-white p-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h6 class="text-white-50 text-uppercase fw-bold mb-2 small" style="letter-spacing: 0.5px;">Total Products</h6>
+                    <h6 class="text-white-50 text-uppercase fw-bold mb-2 small" style="letter-spacing: 0.5px;">All Products</h6>
                     <h2 class="display-6 fw-bold mb-0 text-white"><?= $totalProducts ?></h2>
                 </div>
-                <div class="bg-white bg-opacity-20 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                <div class="bg-white bg-opacity-20 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 20px; height: 20px;">
                     <i class="fa fa-boxes fa-lg text-white"></i>
                 </div>
             </div>
@@ -65,7 +65,7 @@ include __DIR__ . '/navbar.php';
                     <h6 class="text-white-50 text-uppercase fw-bold mb-2 small" style="letter-spacing: 0.5px;">Active Items</h6>
                     <h2 class="display-6 fw-bold mb-0 text-white"><?= $activeProducts ?></h2>
                 </div>
-                <div class="bg-white bg-opacity-20 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                <div class="bg-white bg-opacity-20 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 20px; height: 20px;">
                     <i class="fa fa-check-circle fa-lg text-white"></i>
                 </div>
             </div>
@@ -79,7 +79,7 @@ include __DIR__ . '/navbar.php';
                     <h6 class="text-white-50 text-uppercase fw-bold mb-2 small" style="letter-spacing: 0.5px;">Categories</h6>
                     <h2 class="display-6 fw-bold mb-0 text-white"><?= $totalCategories ?></h2>
                 </div>
-                <div class="bg-white bg-opacity-20 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                <div class="bg-white bg-opacity-20 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 20px; height: 20px;">
                     <i class="fa fa-tags fa-lg text-white"></i>
                 </div>
             </div>
@@ -93,7 +93,7 @@ include __DIR__ . '/navbar.php';
                     <h6 class="text-white-50 text-uppercase fw-bold mb-2 small" style="letter-spacing: 0.5px;">Trusted Clients</h6>
                     <h2 class="display-6 fw-bold mb-0 text-white"><?= $totalCustomers ?></h2>
                 </div>
-                <div class="bg-white bg-opacity-20 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                <div class="bg-white bg-opacity-20 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 20px; height: 20px;">
                     <i class="fa fa-handshake fa-lg text-white"></i>
                 </div>
             </div>

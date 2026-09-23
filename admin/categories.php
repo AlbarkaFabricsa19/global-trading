@@ -114,7 +114,7 @@ require_once __DIR__ . '/header.php';
                         <thead>
                             <tr>
                                 <th class="ps-4" style="width: 70px;">ID</th>
-                                <th>Category Name</th>
+                                <th>Name</th>
                                 <th>Section</th>
                                 <th>Products</th>
                                 <th class="text-end pe-4" style="width: 120px;">Actions</th>
@@ -139,7 +139,7 @@ require_once __DIR__ . '/header.php';
                                         <span class="badge bg-light text-dark border"><?= $cat['product_count'] ?> Products</span>
                                     </td>
                                     <td class="text-end pe-4">
-                                        <a href="categories.php?delete_id=<?= $cat['id'] ?>" class="btn btn-sm btn-outline-danger rounded-pill px-3" onclick="return confirm('Are you sure you want to delete this category?');"><i class="fa fa-trash me-1"></i>Delete</a>
+                                        <a href="categories.php?delete_id=<?= $cat['id'] ?>" class="btn btn-sm text-danger rounded-pill px-3" onclick="return confirm('Are you sure you want to delete this category?');"><i class="fa fa-trash me-1"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
