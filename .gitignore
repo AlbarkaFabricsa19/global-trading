@@ -6,13 +6,6 @@
 *.sqlite3
 *.db
 
-# Uploads directory (optional, keep default structure)
-/uploads/*
-!/uploads/products/
-!/uploads/customers/
-/uploads/products/*
-!/uploads/products/default-product.jpg
-/uploads/customers/*
 
 # Logs & temp files
 *.log
