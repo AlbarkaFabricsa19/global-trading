@@ -2,6 +2,74 @@
 if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
     @session_start();
 }
+
+require_once __DIR__ . '/config/db.php';
+$pdo = getDBConnection();
+ensureInquiriesTable($pdo);
+
+// Fetch categories from DB for dynamic category select
+$catOptions = [];
+try {
+    $catStmt = $pdo->query("SELECT DISTINCT name FROM categories ORDER BY name ASC");
+    $catOptions = $catStmt->fetchAll(PDO::FETCH_COLUMN);
+} catch (Exception $e) {
+    // fallback if categories not yet loaded
+}
+if (empty($catOptions)) {
+    $catOptions = [
+        'Stitching Accessories (Tapes, Elastic, Buttons, Threads)',
+        'Mechanical & Electrical (Pipes, Sheets, Angles, Channels)',
+        'Direct Import Raw Materials',
+        'Bulk Wholesale Stitching Supply',
+        'Custom Industrial Requirements'
+    ];
+}
+
+$errorMsg = '';
+$prefillCategory = sanitizeInput($_GET['category'] ?? $_GET['product'] ?? '');
+
+// Handle Form Submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_inquiry'])) {
+    $name     = sanitizeInput($_POST['name'] ?? '');
+    $email    = sanitizeInput($_POST['email'] ?? '');
+    $phone    = sanitizeInput($_POST['phone'] ?? '');
+    $category = sanitizeInput($_POST['category'] ?? '');
+    $message  = sanitizeInput($_POST['message'] ?? '');
+
+    if (empty($name)) {
+        $errorMsg = 'Please enter your full name.';
+    } elseif (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errorMsg = 'Please provide a valid email address.';
+    } elseif (empty($message)) {
+        $errorMsg = 'Please enter your inquiry details or requirements.';
+    } else {
+        try {
+            $stmt = $pdo->prepare("
+                INSERT INTO contact_inquiries (name, email, phone, category, message, status, created_at)
+                VALUES (?, ?, ?, ?, ?, 'new', CURRENT_TIMESTAMP)
+            ");
+            $stmt->execute([$name, $email, $phone, $category, $message]);
+            $inquiryId = $pdo->lastInsertId();
+
+            // Set session flash for thank-you page
+            $_SESSION['inquiry_success'] = [
+                'id'         => $inquiryId ?: rand(1001, 9999),
+                'name'       => $name,
+                'email'      => $email,
+                'phone'      => $phone,
+                'category'   => $category,
+                'message'    => $message,
+                'created_at' => date('d M Y, h:i A')
+            ];
+
+            // Redirect to submitted / thank you page
+            header("Location: thank-you.php");
+            exit;
+        } catch (Exception $e) {
+            $errorMsg = 'Sorry, failed to save your inquiry. Please try again or call our direct numbers.';
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +113,7 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
             <ul class="vertical-menu">
                <li><a href="index.php">Home Page</a></li>
                <li><a href="about.php">About Us</a></li>
-               <li><a href="index.php#products">Product Catalog</a></li>
+               <li><a href="products.php">Product Catalog</a></li>
                <li><a href="index.php#trusted-clients">Our Trusted Clients</a></li>
                <li><a href="contact.php">Contact Us</a></li>
             </ul>
@@ -96,7 +164,7 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
          <div class="sec-intro text-center mb-5">
             <span class="sub-title wow fadeInUp">Our Office Locations</span>
             <h2 class="sec-title">Get In Touch With Us</h2>
-            <p class="lead text-muted">For inquiries regarding Stitching Accessories, Mechanical & Electrical Fitting orders or bulk imports.</p>
+            <p class="lead text-muted">For inquiries regarding Stitching Accessories, Mechanical &amp; Electrical Fitting orders or bulk imports.</p>
          </div>
 
          <div class="row gy-4 justify-content-center">
@@ -130,7 +198,7 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
                      </li>
                      <li class="d-flex gap-3">
                         <i class="fa fa-envelope text-primary fs-5 mt-1"></i>
-                        <span><strong>Email:</strong> <a href="mailto:globaltradin@gmail.com" class="text-reset">globaltradin@gmail.com</a></span>
+                        <span><strong>Email:</strong> <a href="mailto:asad@globaltrading.live" class="text-reset">asad@globaltrading.live</a></span>
                      </li>
                   </ul>
                </div>
@@ -166,7 +234,7 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
                      </li>
                      <li class="d-flex gap-3">
                         <i class="fa fa-envelope text-primary fs-5 mt-1"></i>
-                        <span><strong>Email:</strong> <a href="mailto:globaltradin@gmail.com" class="text-reset">globaltradin@gmail.com</a></span>
+                        <span><strong>Email:</strong> <a href="mailto:asad@globaltrading.live" class="text-reset">asad@globaltrading.live</a></span>
                      </li>
                   </ul>
                </div>
@@ -174,39 +242,58 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
          </div>
 
          <!-- Contact Form -->
-         <div class="row mt-5 pt-4">
+         <div class="row mt-5 pt-4" id="inquiry-form-section">
             <div class="col-lg-8 mx-auto">
                <div class="card border-0 shadow-sm p-4 p-md-5 rounded-4 bg-white">
-                  <h3 class="h4 fw-bold text-dark text-center mb-4">Send Us A Message</h3>
-                  <form action="#" method="post">
+                  <h3 class="h4 fw-bold text-dark text-center mb-2">Send Us A Message</h3>
+                  <p class="text-muted text-center mb-4">Fill out this quick form and our sales representatives will get back to you promptly.</p>
+
+                  <?php if (!empty($errorMsg)): ?>
+                     <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-4" role="alert">
+                        <i class="fa fa-exclamation-circle me-2"></i><?= htmlspecialchars($errorMsg) ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     </div>
+                  <?php endif; ?>
+
+                  <form action="contact.php#inquiry-form-section" method="post">
                      <div class="row gy-3">
                         <div class="col-md-6">
-                           <label class="form-label fw-semibold">Your Name</label>
-                           <input type="text" class="form-control form-control-lg bg-light" placeholder="Full Name" required>
+                           <label class="form-label fw-semibold">Your Name <span class="text-danger">*</span></label>
+                           <input type="text" name="name" class="form-control form-control-lg bg-light" placeholder="Full Name" value="<?= htmlspecialchars($_POST['name'] ?? '') ?>" required>
                         </div>
                         <div class="col-md-6">
-                           <label class="form-label fw-semibold">Your Email</label>
-                           <input type="email" class="form-control form-control-lg bg-light" placeholder="Email Address" required>
+                           <label class="form-label fw-semibold">Your Email <span class="text-danger">*</span></label>
+                           <input type="email" name="email" class="form-control form-control-lg bg-light" placeholder="Email Address (e.g. name@company.com)" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
                         </div>
                         <div class="col-md-6">
                            <label class="form-label fw-semibold">Phone Number</label>
-                           <input type="text" class="form-control form-control-lg bg-light" placeholder="Contact Number">
+                           <input type="tel" name="phone" class="form-control form-control-lg bg-light" placeholder="0300-1234567" value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>">
                         </div>
                         <div class="col-md-6">
-                           <label class="form-label fw-semibold">Product Category</label>
-                           <select class="form-select form-select-lg bg-light">
-                              <option selected>Select Product Category</option>
-                              <option>Stitching Accessories (Tapes, Elastic, Buttons, Threads)</option>
-                              <option>Mechanical & Electrical (Pipes, Sheets, Angles, Channels)</option>
-                              <option>Direct Import Raw Materials</option>
+                           <label class="form-label fw-semibold">Product / Inquiry Category</label>
+                           <select name="category" class="form-select form-select-lg bg-light">
+                              <option value="General Inquiry">-- Select Category --</option>
+                              <?php foreach ($catOptions as $opt): ?>
+                                 <?php 
+                                    $selected = (
+                                       (isset($_POST['category']) && $_POST['category'] === $opt) ||
+                                       (!isset($_POST['category']) && !empty($prefillCategory) && stripos($opt, $prefillCategory) !== false)
+                                    ) ? 'selected' : '';
+                                 ?>
+                                 <option value="<?= htmlspecialchars($opt) ?>" <?= $selected ?>>
+                                    <?= htmlspecialchars($opt) ?>
+                                 </option>
+                              <?php endforeach; ?>
                            </select>
                         </div>
                         <div class="col-12">
-                           <label class="form-label fw-semibold">Message</label>
-                           <textarea class="form-control bg-light" rows="4" placeholder="Write your inquiry details here..."></textarea>
+                           <label class="form-label fw-semibold">Inquiry Message / Order Requirements <span class="text-danger">*</span></label>
+                           <textarea name="message" class="form-control bg-light" rows="4" placeholder="Please specify your product requirements, required quantity, or delivery timeline..." required><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                         </div>
                         <div class="col-12 text-center mt-4">
-                           <button type="submit" class="btn btn-primary btn-lg px-5">Send Inquiry <i class="fa fa-paper-plane ms-2"></i></button>
+                           <button type="submit" name="submit_inquiry" class="btn btn-primary btn-lg px-5 shadow-sm rounded-pill">
+                              Send Inquiry <i class="fa fa-paper-plane ms-2"></i>
+                           </button>
                         </div>
                      </div>
                   </form>

@@ -6,6 +6,19 @@ requireAdmin();
 $activePage = basename($_SERVER['PHP_SELF']);
 $adminUser = $_SESSION['admin_username'] ?? 'Admin';
 $initial = strtoupper(substr($adminUser, 0, 1));
+
+// Calculate count of new inquiries for badge
+$newInquiriesBadge = 0;
+try {
+    if (!function_exists('getDBConnection')) {
+        require_once __DIR__ . '/../config/db.php';
+    }
+    $navPdo = getDBConnection();
+    ensureInquiriesTable($navPdo);
+    $newInquiriesBadge = (int)$navPdo->query("SELECT COUNT(*) FROM contact_inquiries WHERE status = 'new'")->fetchColumn();
+} catch (Exception $e) {
+    $newInquiriesBadge = 0;
+}
 ?>
 
 <!-- Mobile Sidebar Overlay -->
@@ -51,6 +64,19 @@ $initial = strtoupper(substr($adminUser, 0, 1));
                 <a href="categories.php" class="nav-link <?= $activePage == 'categories.php' ? 'active' : '' ?>">
                     <i class="fa fa-tags"></i>
                     <span>Categories</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-heading">Inquiries & Leads</div>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="inquiries.php?status=new" class="nav-link <?= $activePage == 'inquiries.php' ? 'active' : '' ?>">
+                    <i class="fa fa-envelope-open-text"></i>
+                    <span>Inquiries</span>
+                    <?php if ($newInquiriesBadge > 0): ?>
+                        <span class="badge bg-danger rounded-pill ms-auto" style="font-size: 0.7rem;"><?= $newInquiriesBadge ?></span>
+                    <?php endif; ?>
                 </a>
             </li>
         </ul>

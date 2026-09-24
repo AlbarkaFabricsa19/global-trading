@@ -36,6 +36,48 @@ function getDBConnection() {
     return $pdo;
 }
 
+function ensureInquiriesTable($pdo = null) {
+    if ($pdo === null) {
+        $pdo = getDBConnection();
+    }
+    try {
+        $driver = $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+        if ($driver === 'mysql') {
+            $pdo->exec("
+                CREATE TABLE IF NOT EXISTS contact_inquiries (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    name VARCHAR(150) NOT NULL,
+                    email VARCHAR(150) NOT NULL,
+                    phone VARCHAR(50) DEFAULT NULL,
+                    category VARCHAR(150) DEFAULT NULL,
+                    message TEXT NOT NULL,
+                    status VARCHAR(30) NOT NULL DEFAULT 'new',
+                    admin_notes TEXT DEFAULT NULL,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            ");
+        } else {
+            $pdo->exec("
+                CREATE TABLE IF NOT EXISTS contact_inquiries (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
+                    email TEXT NOT NULL,
+                    phone TEXT DEFAULT NULL,
+                    category TEXT DEFAULT NULL,
+                    message TEXT NOT NULL,
+                    status TEXT NOT NULL DEFAULT 'new',
+                    admin_notes TEXT DEFAULT NULL,
+                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+            ");
+        }
+    } catch (Exception $e) {
+        // Table creation or check failed silently
+    }
+}
+
 function sanitizeInput($data) {
     return htmlspecialchars(trim((string)$data), ENT_QUOTES, 'UTF-8');
 }

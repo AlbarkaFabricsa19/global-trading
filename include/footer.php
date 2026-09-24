@@ -30,7 +30,7 @@
                   <ul>
                      <li><i class="fa fa-map-marker-alt me-2 text-primary"></i>Plot number 42, Street 1, Sector F,<br>Phase 5, DHA, Lahore</li>
                      <li><i class="fa fa-phone me-2 text-primary"></i>0306-9249949 / 0300-4612749</li>
-                     <li><i class="fa fa-envelope me-2 text-primary"></i>globaltradin@gmail.com</li>
+                     <li><i class="fa fa-envelope me-2 text-primary"></i>asad@globaltrading.live</li>
                   </ul>
                </div>
             </div>
@@ -40,7 +40,7 @@
                   <ul>
                      <li><i class="fa fa-map-marker-alt me-2 text-primary"></i>Main canal road near canal garden,<br>Faisalabad</li>
                      <li><i class="fa fa-phone me-2 text-primary"></i>0309-2155551 / 0333-8396059</li>
-                     <li><i class="fa fa-envelope me-2 text-primary"></i>globaltradin@gmail.com</li>
+                     <li><i class="fa fa-envelope me-2 text-primary"></i>asad@globaltrading.live</li>
                   </ul>
                </div>
             </div>
