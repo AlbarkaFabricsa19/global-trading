@@ -1,4 +1,4 @@
-   <footer class="footer footer-default sec-padding bg-secondary pb-0">
+﻿   <footer class="footer footer-default sec-padding bg-secondary pb-0">
       <div class="container">
          <div class="footer-top d-sm-flex align-items-center justify-content-between">
             <div class="social-share circle">
@@ -56,7 +56,7 @@
                      <li><a href="index.php">Home</a></li>
                      <li><a href="products.php">Products</a></li>
                      <li><a href="about.php">About Us</a></li>
-                     <li><a href="contact.php">Contact Us</a></li>
+                     <li><a href="compliance.php">Compliance</a></li>`r`n                      <li><a href="contact.php">Contact Us</a></li>
                   </ul>
                </nav>
             </div>

@@ -86,6 +86,9 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.php">Contact Us</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="compliance.php">Compliance</a>
+                                </li>
                                 <?php if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true): ?>
                                     <li class="nav-item ms-lg-2">
                                         <a class="btn btn-sm btn-primary rounded-pill px-3" href="admin/index.php"><i class="fa fa-cog me-1"></i> Admin Panel</a>
